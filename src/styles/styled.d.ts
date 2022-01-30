@@ -19,6 +19,10 @@ declare module 'styled-components' {
             size: number;
             text: number;
         };
+        input: {
+            height: number;
+            width: number;
+        };
         section: {
             titleHeight: number;
             bodyHeight: number;
