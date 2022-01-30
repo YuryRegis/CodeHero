@@ -21,8 +21,12 @@ const colors = {
 const metrics = {
     body: RFValue(16),
     text: RFValue(21),
-    title: RFValue(27),
+    title: RFValue(16),
     avatar: RFValue(58),
+    input: {
+        height: RFValue(31),
+        width: RFValue(250),
+    },
     section: {
         titleHeight: RFValue(37),
         bodyHeight:  RFValue(112),
