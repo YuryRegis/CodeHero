@@ -15,6 +15,7 @@ declare module 'styled-components' {
         body: number;
         title: number;
         avatar: number;
+        text: number;
         counter: {
             size: number;
             text: number;
