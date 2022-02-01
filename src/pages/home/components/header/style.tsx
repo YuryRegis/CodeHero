@@ -48,5 +48,5 @@ export const Label = styled.Text`
 
     color: ${({theme}) => theme.colors.white};
 
-    margin-left: ${({theme}) => theme.metrics.avatar + theme.spacing.l+1}px;
+    margin-left: ${({theme}) => theme.metrics.avatar + (theme.spacing.m*2)}px;
 `
