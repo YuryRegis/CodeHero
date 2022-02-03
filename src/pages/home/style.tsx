@@ -13,7 +13,7 @@ export const CardContainer = styled.View`
 
 `
 
-export const RowContainer = styled.View`
+export const RowContainer = styled.TouchableOpacity`
     flex-direction: row;
     align-items: center;
 

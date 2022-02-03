@@ -12,7 +12,7 @@ import {
 } from './style'
 
 
-export const Home: React.FC = () => {
+export const Home: React.FC = ({navigation}) => {
     const [isRefreshing, setIsRefreshing] = useState(false)
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [currentPage, setCurrentPage] = useState<number>(1)
@@ -90,6 +90,10 @@ export const Home: React.FC = () => {
            setIsLoading(_ => false)
        }
     }
+
+    function navigationHandler(item: any) {
+        navigation.navigate('CardHero', {item})
+    }
     
     useEffect(() => {
         updateData()
@@ -120,7 +124,7 @@ export const Home: React.FC = () => {
                 />}
             renderItem={({item}) => (
                 <CardContainer>
-                    <RowContainer>
+                    <RowContainer onPress={() => navigationHandler(item)}>
                         <Avatar source={{uri: `${item.thumbnail.path}.${item.thumbnail.extension}` }} />
                         <Text>{item.name}</Text>
                     </RowContainer>
