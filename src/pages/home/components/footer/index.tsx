@@ -21,7 +21,7 @@ interface IFooter {
     numberOfPages?: number;
     leftButtonAction?: () => void;
     rightButtonAction?: () => void;
-    pageButtonAction?: () => Promise<void>;
+    pageButtonAction?: (item: number) => void;
 }
 
 

@@ -1,8 +1,6 @@
-import homeLocale from '../../locale'
 import { FlatList } from 'react-native'
 import { getAllHeroes } from '../../services'
 import { Header, Footer } from './components'
-import { getDeviceLanguage } from '../../utils'
 import { LoadingModal } from '../../components'
 import React, {useState, useEffect} from 'react'
 import { 
@@ -15,6 +13,7 @@ import {
 
 
 export const Home: React.FC = () => {
+    const [isRefreshing, setIsRefreshing] = useState(false)
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [currentPage, setCurrentPage] = useState<number>(1)
     const [offset, setOffset] = useState<number>(0)
@@ -41,7 +40,7 @@ export const Home: React.FC = () => {
         setCurrentPage(oldState => oldState + 1)
     }
 
-    async function LeftButtonAction() {
+    function LeftButtonAction() {
         if(currentPage===1) return
         const _offset = offset===0 ? 0 : offset-4
         
@@ -50,7 +49,7 @@ export const Home: React.FC = () => {
         setCurrentPage(oldState => oldState - 1)
     }
 
-    async function pageButtonAction(currentPageState: number) {
+    function pageButtonAction(currentPageState: number) {
         const _offset = (currentPageState-1) * 4
         
         setIsLoading(_ => true)
@@ -58,7 +57,29 @@ export const Home: React.FC = () => {
         setCurrentPage(_ => currentPageState)
     }
 
-    async function updateData() {
+    async function onRefresh() {
+        setIsRefreshing(_ => true)
+        setCurrentPage(_ => 1)
+        await updateData()
+        setIsRefreshing(_ => false)
+    }
+
+    async function searchAction(name: string) {
+        setIsLoading(_ => true)
+        if(name === '')
+            return updateData()
+        try {
+            const {data: dataMarvel} = await getAllHeroes(0, name)
+            setCount(_ => dataMarvel.total)
+            setData(_ => dataMarvel.results)
+       } catch(error) {
+           console.log(error)
+       } finally {
+           setIsLoading(_ => false)
+       }
+    }
+
+    async function updateData(name?: string) {
         try {
             const {data: dataMarvel} = await getAllHeroes(offset)
             setCount(_ => dataMarvel.total)
@@ -83,10 +104,12 @@ export const Home: React.FC = () => {
        <Container>
            {isLoading && <LoadingModal/>}
 
-           <Header />
+           <Header searchAction={searchAction}/>
            
            <FlatList 
             data={data}
+            onRefresh={onRefresh}
+            refreshing={isRefreshing}
             keyExtractor={(item, _) => `${item.id}`}
             ListFooterComponent={() => <Footer 
                     currentPage={currentPage}

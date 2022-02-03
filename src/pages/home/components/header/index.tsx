@@ -1,5 +1,4 @@
 import React from 'react'
-import { FlatList } from 'react-native'
 import { Input } from '../../components'
 import homeLocale from '../../../../locale'
 import {
@@ -14,10 +13,15 @@ import {
 import { getDeviceLanguage } from '../../../../utils'
 
 
+interface IHeader {
+  searchAction: (name: string) => void;
+}
+
+
 const deviceLanguage = getDeviceLanguage()
 const locale = deviceLanguage==='pt_BR' ? homeLocale.ptBR : homeLocale.enUS
 
-const Header: React.FC = () => {
+const Header: React.FC<IHeader> = ({searchAction}) => {
    return (
       <Container>
           <RowContainer>
@@ -29,7 +33,7 @@ const Header: React.FC = () => {
             <RedLine />
           </RowContainer>
 
-          <Input />
+          <Input searchAction={searchAction} />
 
           <RedBox>
               <RowContainer>
