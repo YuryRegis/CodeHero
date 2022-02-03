@@ -3,12 +3,12 @@ import { View } from 'react-native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 
-import { Home } from '../pages'
+import { Home, CardHero } from '../pages'
 
 
 const Stack = createStackNavigator();
 
-function StackNavigator() {
+function StackNavigator () {
   return (
     <View style={{flex: 1}}>
       <NavigationContainer>
@@ -22,8 +22,9 @@ function StackNavigator() {
             />
           <Stack.Screen 
             name='CardHero' 
-            component={Home} 
+            component={CardHero} 
             options={{
+                title: 'Hero Details',
                 headerMode: 'screen',
                 headerTintColor: 'white',
                 headerStyle: { backgroundColor: '#D42026' }
