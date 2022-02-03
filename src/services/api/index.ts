@@ -1,3 +1,4 @@
+import { PUBLIC_KEY, PRIVATE_KEY } from '@env'
 import axios, { AxiosInstance, AxiosResponse } from 'axios'
 
 
@@ -8,8 +9,8 @@ const API: AxiosInstance = axios.create({
 
 export const getAllHeroes = async(offset: number, name?: string) => {
     const timeStamp = Number(new Date())
-    const publicKey = 'a1c8cb9003de0daad5bd5b85661aa8c6'
-    const privateKey = 'bcf8c4df391cd74710d33f021b7fc039b51355f0'
+    const publicKey = PUBLIC_KEY
+    const privateKey = PRIVATE_KEY
     const hash = MD5(`${timeStamp}${privateKey}${publicKey}`)
     
     const params = {
