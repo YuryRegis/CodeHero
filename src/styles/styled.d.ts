@@ -36,6 +36,23 @@ declare module 'styled-components' {
             width: number;
             height: number;
         };
+        card: {
+            width: number;
+            height:  number;
+            fontSize: {
+                title: number;
+                text: number;
+            };
+            image: {
+                large: {
+                    width: number;
+                    height:  number;
+                };
+                regular: {
+                    width: number;
+                    height:  number;
+                }
+            }
     }
 
     export interface DefaultTheme {

@@ -42,7 +42,25 @@ const metrics = {
     playButton: {
         height:  RFValue(16),
         width:  RFValue(12)
-    }
+    },
+    card: {
+        width: RFValue(250),
+        height:  RFValue(400),
+        fontSize: {
+            title: RFValue(21),
+            text: RFValue(16),
+        },
+        image: {
+            large: {
+                width: RFValue(250),
+                height:  RFValue(500),
+            },
+            regular: {
+                width: RFValue(210),
+                height:  RFValue(210),
+            }
+        }
+    },
 }
 
 const font = {
