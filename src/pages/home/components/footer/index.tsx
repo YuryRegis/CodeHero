@@ -63,6 +63,7 @@ const Footer: React.FC<IFooter> = ({
 
     return (
         <Container>
+            { numberOfPages===1 ? <React.Fragment/> :
             <RowContainer>
                 <Content>
                     <Pagination>
@@ -106,6 +107,7 @@ const Footer: React.FC<IFooter> = ({
                     </Pagination>
                 </Content>
             </RowContainer>
+        }
         </Container>
     )
 }
