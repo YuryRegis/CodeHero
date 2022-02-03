@@ -4,6 +4,9 @@ import styled from 'styled-components/native'
 export const Container = styled.View`
     flex: 1;
     background: ${({theme}) => theme.colors.white};
+
+    border-color: ${({theme}) => theme.colors.background};
+    border-bottom-width: ${({theme}) => theme.spacing.s}px;
 `
 
 export const CardContainer = styled.View`
@@ -17,8 +20,6 @@ export const RowContainer = styled.View`
     border-bottom-width: 1px;
     border-color: ${({theme}) => theme.colors.background};
 `
-
-
 
 export const Text = styled.Text`
     color: ${({theme}) => theme.colors.text};
