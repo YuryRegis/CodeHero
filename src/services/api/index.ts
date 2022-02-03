@@ -6,7 +6,7 @@ const API: AxiosInstance = axios.create({
     baseURL: 'http://gateway.marvel.com/v1/public',
 })
 
-export const getAllHeroes = async({offset}) => {
+export const getAllHeroes = async(offset: number) => {
     const timeStamp = Number(new Date())
     const publicKey = 'a1c8cb9003de0daad5bd5b85661aa8c6'
     const privateKey = 'bcf8c4df391cd74710d33f021b7fc039b51355f0'
